@@ -1,6 +1,7 @@
 {
   "name": "choosy-gallery",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch"
