@@ -4,15 +4,21 @@ _This project is in alpha. The API may change before v1.0.0._
 
 ChoosyGallery is a jQuery plugin that tiles collections of images in a justified grid (so they fill their container wall-to-wall).
 
+What makes ChoosyGallery different from other photo gallery plugins is that **you can specify a different desired display size for each image in the gallery**. ChoosyGallery's tiling algorithm tries to minimize the error between each photo's desired size and the actual size it ends up rendered at as result of its placement in the gallery.
+
+This lets the designer (you!) **express preferences for certain images to be given more screen real estate than others**. The tiling algorithm always tries to adhere to these preferences as it re-arranges images in response to changing container size.
+
 ![example of ChoosyGallery tiling some images](example-1.png)
 
 _Example images served courtesy of [placeimg.com](http://placeimg.com)_
 
-What makes ChoosyGallery different from other photo gallery plugins is that **you can specify a different desired display size for each image in the gallery**. ChoosyGallery's tiling algorithm tries to minimize the error between each photo's desired size and the actual size it ends up rendered at as result of its placement in the gallery.
+In the above example, the dog and cat images share a row together, so they are obligated to be the same height. However, in the (unseen) HTML markup, the dog image has a bigger value of `data-desired-height` than the cat image.
+
+Below you can see the same gallery after it's been re-tiled for a narrower screen.
 
 ![another example showing images with different desired heights being tiled together](example-2.png)
 
-Here, the same gallery from the previous example has been retiled at a different width. The dog and cat images previously shared a row together. The dog image has a larger `data-desired-height` attribute than the cat image, so when the gallery is retiled the dog gets its own row, while the cat shares a row with another image.
+The re-tiling gave preferential treatment to the dog image by putting it on its own row. The cat, whose `data-desired-height` value was smaller, has to share a row with another image.
 
 ## How to use
 
