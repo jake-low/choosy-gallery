@@ -1,0 +1,6 @@
+extends: eslint:recommended
+parser: babel-eslint
+env:
+  browser: true
+globals:
+  jQuery: true
