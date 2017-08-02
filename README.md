@@ -12,7 +12,7 @@ What makes ChoosyGallery different from other photo gallery plugins is that **yo
 
 ![another example showing images with different desired heights being tiled together](example-2.png)
 
-In this example, the dog image has a larger `data-desired-height` attribute than the cat image, so the dog gets its own row.
+Here, the same gallery from the previous example has been retiled at a different width. The dog and cat images previously shared a row together. The dog image has a larger `data-desired-height` attribute than the cat image, so when the gallery is retiled the dog gets its own row, while the cat shares a row with another image.
 
 ## How to use
 
