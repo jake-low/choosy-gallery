@@ -1,5 +1,11 @@
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+
+var PACKAGE = require(path.resolve(__dirname, 'package.json'));
+
+const banner = "ChoosyGallery v" + PACKAGE.version +
+  '\n\n' + fs.readFileSync(path.resolve(__dirname, 'LICENSE'), 'utf8');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/choosy-gallery.js'),
@@ -21,5 +27,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+      new webpack.BannerPlugin(banner),
+      new webpack.optimize.UglifyJsPlugin()
+  ],
   devtool: 'source-map',
 };
