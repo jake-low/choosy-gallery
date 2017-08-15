@@ -9,12 +9,16 @@ const banner = "ChoosyGallery v" + PACKAGE.version +
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/choosy-gallery.js'),
+
   output: {
     path: path.resolve(__dirname, 'build'),
     library: 'choosyGallery',
     libraryTarget: 'umd',
     filename: 'choosy-gallery.min.js'
   },
+
+  devtool: 'source-map',
+
   module: {
     loaders: [
       {
@@ -27,9 +31,9 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
       new webpack.BannerPlugin(banner),
-      new webpack.optimize.UglifyJsPlugin()
+      //new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
   ],
-  devtool: 'source-map',
 };
