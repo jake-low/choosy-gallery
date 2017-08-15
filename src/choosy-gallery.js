@@ -159,13 +159,13 @@ class Gallery {
       // from showing on the screen before we've had time to set their sizes
       this.unmount();
 
-      setTimeout(2000, () => {
+      setTimeout(() => {
         // in case onload never fires, set a timer to mount the component.
         // FIXME this is a hack; ideally we'd detect whether images were loaded
         // some other way.
         this.render();
         this.mount();
-      });
+      }, 2000);
     });
 
     $(window).on('load', () => {
@@ -174,8 +174,6 @@ class Gallery {
       this.render();
       // once the render is complete, unhide the gallery.
       this.mount();
-
-      console.log("wooooo");
     });
 
     $(window).on('resize', () => {
