@@ -158,6 +158,14 @@ class Gallery {
       // as soon as the DOM is ready, hide the gallery. this prevents images
       // from showing on the screen before we've had time to set their sizes
       this.unmount();
+
+      setTimeout(2000, () => {
+        // in case onload never fires, set a timer to mount the component.
+        // FIXME this is a hack; ideally we'd detect whether images were loaded
+        // some other way.
+        this.render();
+        this.mount();
+      });
     });
 
     $(window).on('load', () => {
@@ -168,14 +176,6 @@ class Gallery {
       this.mount();
 
       console.log("wooooo");
-    });
-
-    setTimeout(2000, () => {
-      // in case onload never fires, set a timer to mount the component.
-      // FIXME this is a hack; ideally we'd detect whether images were loaded
-      // some other way.
-      this.render();
-      this.mount();
     });
 
     $(window).on('resize', () => {
@@ -256,7 +256,9 @@ class Gallery {
 if (typeof jQuery !== undefined) {
   jQuery.fn.choosyGallery = function (options) {
     return this.each(function () {
-      new Gallery(this, options);
+      // $(selector).data('gallery') can be used to access the Gallery instance,
+      // which may be useful e.g. for forcing it to render() after modification.
+      $(this).data('gallery', new Gallery(this, options));
     });
   };
 }
